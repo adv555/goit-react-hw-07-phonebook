@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
 // import { FaUser, FaMobileAlt } from 'react-icons/fa';
 import s from 'components/ContactForm/ContactForm.module.scss';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/operations';
 
 export default function Form() {
   const dispatch = useDispatch();

@@ -1,31 +1,37 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ImBin } from 'react-icons/im';
-import { deleteContact } from 'redux/actions';
-import { getVisibleContacts } from 'redux/selectors';
+import { deleteContact } from 'redux/operations';
+import { getContacts } from 'redux/selectors';
 
 import s from './ContactList.module.scss';
 
 export default function ContactList() {
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+  console.log(contacts);
 
   return (
     <table className={s.contactList}>
       <tbody>
-        {contacts.map(({ id, name, number }) => {
-          return (
-            <tr className={s.contactListItem} id={id} key={id}>
-              <td className={s.name}>{name}</td>
-              <td className={s.number}>{number}</td>
-              <td className={s.contactBtn}>
-                <button className={s.btn} type="button" onClick={() => dispatch(deleteContact(id))}>
-                  <ImBin />
-                </button>
-              </td>
-            </tr>
-          );
-        })}
+        {contacts[0] &&
+          contacts[0].length > 1 &&
+          contacts[0].map(({ name, number, id }) => {
+            return (
+              <tr className={s.contactListItem} id={id} key={id}>
+                <td className={s.name}>{name}</td>
+                <td className={s.number}>{number}</td>
+                <td className={s.contactBtn}>
+                  <button
+                    className={s.btn}
+                    type="button"
+                    onClick={() => dispatch(deleteContact(id))}
+                  >
+                    <ImBin />
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
       </tbody>
     </table>
   );

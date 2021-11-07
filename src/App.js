@@ -1,13 +1,22 @@
-import 'styles/shared.scss';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import Header from 'components/Header';
 import Section from 'components/Section';
 import Form from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
+import { fetchContacts } from 'redux/operations';
 // import { useLocalStorage } from 'hooks/useLocalStorage';
+import 'styles/shared.scss';
 
-export default function App() {
+const App = () => {
   // const [contacts, setContacts] = useLocalStorage('contacts', initialContacts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -20,7 +29,9 @@ export default function App() {
       </Section>
     </div>
   );
-}
+};
+
+export default App;
 
 // const [contacts, setContacts] = useState(
 //   JSON.parse(window.localStorage.getItem('contacts:')) ?? initialContacts,
