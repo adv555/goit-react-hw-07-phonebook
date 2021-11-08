@@ -26,7 +26,7 @@ function getNewContact(state, { payload }) {
 }
 
 const items = createReducer([], {
-  [fetchContactSuccess]: (_, { payload }) => payload.sort((a, b) => a.name.localeCompare(b.name)),
+  [fetchContactSuccess]: (_, { payload }) => payload,
   [addContactSuccess]: (state, action) => getNewContact(state, action),
   [deleteContactSuccess]: (state, { payload }) => state.filter(({ id }) => id !== payload),
 });

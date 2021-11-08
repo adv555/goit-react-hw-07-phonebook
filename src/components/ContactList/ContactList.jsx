@@ -13,25 +13,19 @@ export default function ContactList() {
   return (
     <table className={s.contactList}>
       <tbody>
-        {contacts[0] &&
-          contacts[0].length > 1 &&
-          contacts[0].map(({ name, number, id }) => {
-            return (
-              <tr className={s.contactListItem} id={id} key={id}>
-                <td className={s.name}>{name}</td>
-                <td className={s.number}>{number}</td>
-                <td className={s.contactBtn}>
-                  <button
-                    className={s.btn}
-                    type="button"
-                    onClick={() => dispatch(deleteContact(id))}
-                  >
-                    <ImBin />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+        {contacts.map(({ name, number, id }) => {
+          return (
+            <tr className={s.contactListItem} id={id} key={id}>
+              <td className={s.name}>{name}</td>
+              <td className={s.number}>{number}</td>
+              <td className={s.contactBtn}>
+                <button className={s.btn} type="button" onClick={() => dispatch(deleteContact(id))}>
+                  <ImBin />
+                </button>
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
