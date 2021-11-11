@@ -8,7 +8,6 @@ const fetchContacts = createAsyncThunk('contacts/fetchContacts', async () => {
   fetchContacts.pending();
   try {
     const { data } = await axios.get('/contacts');
-    console.log(data);
     return data;
   } catch (error) {
     fetchContacts.rejected(error);
@@ -19,7 +18,7 @@ const addContact = createAsyncThunk('contacts/addContact', async contact => {
   addContact.pending();
   try {
     const { data } = await axios.post('/contacts', contact);
-    console.log(data);
+
     return data;
   } catch (error) {
     addContact.rejected(error);
@@ -30,7 +29,6 @@ const deleteContact = createAsyncThunk('contacts/deleteContact', async id => {
   deleteContact.pending();
   try {
     await axios.delete(`/contacts/${id}`);
-    console.log(id);
     return id;
   } catch (error) {
     deleteContact.rejected(error);

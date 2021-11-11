@@ -9,7 +9,6 @@ import s from './ContactList.module.scss';
 export default function ContactList() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  console.log(contacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
