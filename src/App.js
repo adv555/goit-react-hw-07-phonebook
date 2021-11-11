@@ -6,18 +6,19 @@ import Section from 'components/Section';
 import Form from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
+import { isLoading } from 'redux/selectors';
 
 import 'styles/shared.scss';
 
 const App = () => {
-  const isloading = useSelector(state => state.contacts.loading);
+  const loader = useSelector(isLoading);
 
   return (
     <div className="App">
       <Header title={'PhoneBook'}>
         <Filter />
       </Header>
-      {isloading && (
+      {loader && (
         <Section>
           <Loader type="Oval" color="black" height={'50vh'} width={80} />
         </Section>
