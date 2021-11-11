@@ -19,7 +19,6 @@ const App = () => {
       </Header>
       {isloading && (
         <Section>
-          {/* <Loader type="TailSpin" color="black" height={80} width={80} /> */}
           <Loader type="Oval" color="black" height={'50vh'} width={80} />
         </Section>
       )}

@@ -6,6 +6,9 @@
   width: 90vw;
   min-height: 20px;
   border-radius: 5px;
+  cursor: pointer;
+  padding: 0 20px;
+  font-size: medium;
 
   @media screen and (min-width: 420px) {
     // width: calc(320px + 2vmin);
