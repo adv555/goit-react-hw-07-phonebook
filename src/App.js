@@ -1,22 +1,28 @@
-// import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Loader from 'react-loader-spinner';
 
 import Header from 'components/Header';
 import Section from 'components/Section';
 import Form from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
-// import { fetchContacts } from 'redux/operations';
-// import { useLocalStorage } from 'hooks/useLocalStorage';
+
 import 'styles/shared.scss';
 
 const App = () => {
-  // const [contacts, setContacts] = useLocalStorage('contacts', initialContacts);
+  const isloading = useSelector(state => state.contacts.loading);
 
   return (
     <div className="App">
       <Header title={'PhoneBook'}>
         <Filter />
       </Header>
+      {isloading && (
+        <Section>
+          {/* <Loader type="TailSpin" color="black" height={80} width={80} /> */}
+          <Loader type="Oval" color="black" height={'50vh'} width={80} />
+        </Section>
+      )}
       <Section title={'Contacts'}>
         <Form />
         <ContactList />
