@@ -9,7 +9,7 @@
     width: 620px;
     font-size: calc(14px + 0.5vmin);
     padding-left: 20px;
-    // border-left: 1px solid darkgray;
+    border-left: 2px solid darkgray;
   }
 }
 
@@ -27,5 +27,9 @@ td {
     border: none;
     background: white;
     cursor: pointer;
+
+    // @media screen and(min-width: 768px) {
+    //   padding-left: 50px;
+    // }
   }
 }

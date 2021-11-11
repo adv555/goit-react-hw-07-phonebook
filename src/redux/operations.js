@@ -11,7 +11,8 @@ import {
   deleteContactError,
 } from 'redux/actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+// axios.defaults.baseURL = 'http://localhost:4040';
+axios.defaults.baseURL = 'https://618a957134b4f400177c47b5.mockapi.io/api/v1';
 
 const fetchContacts = () => async dispatch => {
   dispatch(fetchContactRequest());
