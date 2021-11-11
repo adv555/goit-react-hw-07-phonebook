@@ -8,7 +8,7 @@ export default function Filter() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className={s.Filter}>
       <label className={s.FilterLabel} htmlFor="">
         Filter contacts by name
         <input
