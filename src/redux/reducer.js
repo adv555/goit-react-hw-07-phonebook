@@ -1,17 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import {
-  fetchContactRequest,
-  fetchContactSuccess,
-  fetchContactError,
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  deleteContactRequest,
-  deleteContactSuccess,
-  deleteContactError,
-  changeFilter,
-} from 'redux/actions';
+import { fetchContacts, addContact, deleteContact } from './operations';
+
+import { changeFilter } from 'redux/actions';
 
 function getNewContact(state, { payload }) {
   const existContact = state.some(({ name }) => name === payload.name);
@@ -19,23 +10,23 @@ function getNewContact(state, { payload }) {
 }
 
 const items = createReducer([], {
-  [fetchContactSuccess]: (_, { payload }) => payload,
-  [addContactSuccess]: (state, action) => getNewContact(state, action),
-  [deleteContactSuccess]: (state, { payload }) => state.filter(({ id }) => id !== payload),
+  [fetchContacts.fulfilled]: (_, { payload }) => payload,
+  [addContact.fulfilled]: (state, action) => getNewContact(state, action),
+  [deleteContact.fulfilled]: (state, { payload }) => state.filter(({ id }) => id !== payload),
 });
 
 const loading = createReducer(false, {
-  [fetchContactRequest]: () => true,
-  [fetchContactSuccess]: () => false,
-  [fetchContactError]: () => false,
+  [fetchContacts.pending]: () => true,
+  [fetchContacts.fulfilled]: () => false,
+  [fetchContacts.rejected]: () => false,
 
-  [addContactRequest]: () => true,
-  [addContactSuccess]: () => false,
-  [addContactError]: () => false,
+  [addContact.pending]: () => true,
+  [addContact.fulfilled]: () => false,
+  [addContact.rejected]: () => false,
 
-  [deleteContactRequest]: () => true,
-  [deleteContactSuccess]: () => false,
-  [deleteContactError]: () => false,
+  [deleteContact.pending]: () => true,
+  [deleteContact.fulfilled]: () => false,
+  [deleteContact.rejected]: () => false,
 });
 
 const filter = createReducer('', {

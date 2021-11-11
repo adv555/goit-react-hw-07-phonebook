@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ImBin } from 'react-icons/im';
-import { deleteContact } from 'redux/operations';
+import { fetchContacts, deleteContact } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
 
 import s from './ContactList.module.scss';
@@ -9,6 +10,10 @@ export default function ContactList() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   console.log(contacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <table className={s.contactList}>

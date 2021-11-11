@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import contactsReducer from 'redux/reducer';
 
 const middleware = getDefaultMiddleware => [
@@ -10,7 +10,7 @@ const middleware = getDefaultMiddleware => [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
+  // logger,
 ];
 
 const store = configureStore({

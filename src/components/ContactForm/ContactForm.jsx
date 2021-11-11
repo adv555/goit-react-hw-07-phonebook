@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
-// import { FaUser, FaMobileAlt } from 'react-icons/fa';
 import s from 'components/ContactForm/ContactForm.module.scss';
 import { addContact } from 'redux/operations';
 
@@ -28,7 +27,7 @@ export default function Form() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(addContact(name, formatPhoneNumber(number)));
+    dispatch(addContact({ name, number }));
     reset();
   };
 
@@ -37,23 +36,12 @@ export default function Form() {
     setNumber('');
   };
 
-  const formatPhoneNumber = number => {
-    //Filter only numbers from the input
-    let cleaned = ('' + number).replace(/\D/g, '');
-    //Check if the input is of correct length
-    let match = cleaned.match(/^(\d{3})(\d{2})(\d{2})$/);
-
-    return match ? +match[1] + '-' + match[2] + '-' + match[3] : number;
-  };
-
   const nameInputId = shortid.generate();
   const numberInputId = shortid.generate();
 
   return (
     <form className={s.Form} onSubmit={handleSubmit}>
       <div className={s.Group}>
-        {/* <label htmlFor={nameInputId}>Name</label> */}
-        {/* <FaUser style={{ position: 'absolute', top: '22px', left: '5px' }} size="13px" /> */}
         <input
           type="text"
           name="name"
@@ -70,11 +58,6 @@ export default function Form() {
       </div>
 
       <div className={s.Group}>
-        {/* <label htmlFor={numberInputId}>Number</label> */}
-        {/* <FaMobileAlt
-          style={{ position: 'absolute', top: '20px', left: '5px' }}
-          size="calc(14px + 0.3vmin)"
-        /> */}
         <input
           type="tel"
           name="number"
