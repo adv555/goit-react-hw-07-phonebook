@@ -16,7 +16,7 @@ export default function Filter() {
           className={s.FilterInput}
           type="text"
           value={value}
-          // autoComplete="off"
+          autoComplete="off"
           autoFocus
           placeholder="Search ..."
           onChange={e => dispatch(changeFilter(e.target.value))}
