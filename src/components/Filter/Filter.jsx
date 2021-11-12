@@ -6,6 +6,7 @@ import s from 'components/Filter/Filter.module.scss';
 export default function Filter() {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
+  console.log(value);
 
   return (
     <div className={s.Filter}>
@@ -15,7 +16,7 @@ export default function Filter() {
           className={s.FilterInput}
           type="text"
           value={value}
-          autoComplete="off"
+          // autoComplete="off"
           autoFocus
           placeholder="Search ..."
           onChange={e => dispatch(changeFilter(e.target.value))}

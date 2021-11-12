@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ImBin } from 'react-icons/im';
 import { fetchContacts, deleteContact } from 'redux/operations';
-import { getContacts, isLoading } from 'redux/selectors';
+import { getVisibleContacts, isLoading } from 'redux/selectors';
 
 import s from './ContactList.module.scss';
 
 export default function ContactList() {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(getVisibleContacts);
   const loader = useSelector(isLoading);
   const dispatch = useDispatch();
 
