@@ -6,7 +6,6 @@ import s from 'components/Filter/Filter.module.scss';
 export default function Filter() {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
-  console.log(value);
 
   return (
     <div className={s.Filter}>
